@@ -1,0 +1,5 @@
+spring:
+  data:
+    mongodb:
+      url : mongodb+srv://dev:az9Y7tr5eGTgHzVF@nttdata.tipkdvn.mongodb.net/bootcamp?retryWrites=true&w=majority
+      database : Accounts
