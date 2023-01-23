@@ -1,7 +1,7 @@
 accounttransactions:
   property: AccountTransactions Profile Dev
 server:
-  port: 8097
+  port: ${PORT:${SERVER_PORT:0}}
 spring:
   data:
     mongodb:
@@ -13,5 +13,5 @@ eureka:
     register-with-eureka: true
     service-url:
       default-zone: http://localhost:8761/eureka
-    instance:
-      hostname: localhost
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
