@@ -6,3 +6,6 @@ eureka:
     register-with-eureka: false
   server:
     wait-time-in-ms-when-sync-empty: 0
+  instance:
+    prefer-ip-address: true
+    ip-address: 192.168.1.2
