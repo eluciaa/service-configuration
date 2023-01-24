@@ -8,7 +8,7 @@ eureka:
       default-zone: http://192.168.1.2:8761/eureka
   instance:
     prefer-ip-address: true
-    ip-address: "${HOST}"
+    ip-address: 192.168.1.2
 spring:
   cloud:
     gateway:
