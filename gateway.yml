@@ -5,9 +5,9 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      default-zone: http://host.docker.internal:8761/eureka
+      default-zone: http://kubernetes.docker.internal:8761/eureka
   instance:
-    hostname: host.docker.internal
+    hostname: kubernetes.docker.internal
 spring:
   cloud:
     gateway:
