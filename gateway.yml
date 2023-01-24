@@ -7,7 +7,7 @@ eureka:
     service-url:
       default-zone: http://host.docker.internal:8761/eureka
   instance:
-    hostname: host.docker.internal
+    hostname: ${HOSTNAME}
 spring:
   cloud:
     gateway:
