@@ -7,4 +7,4 @@ eureka:
   server:
     wait-time-in-ms-when-sync-empty: 0
   instance:
-    hostname: host.docker.internal
+    hostname: localhost
