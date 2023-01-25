@@ -22,7 +22,7 @@ services:
     image: ms-gateway
     environment:
       - JAVA_OPTS=
-        -DEUREKA_SERVER=http://ms-eurekaserver:8761/eureka
+        -DEUREKA_SERVER=http://eurekaserver:8761/eureka
     ports:
       - "8081:8081"
     depends_on:
@@ -34,7 +34,7 @@ services:
     image: ms-bankaccount
     environment:
       - JAVA_OPTS=
-        -DEUREKA_SERVER=http://ms-eurekaserver:8761/eureka
+        -DEUREKA_SERVER=http://eurekaserver:8761/eureka
     ports:
       - "8700:8700"
     depends_on:
