@@ -1,0 +1,17 @@
+movement:
+  property: Movement Profile Dev
+server:
+  port: ${PORT:${SERVER_PORT:0}}
+spring:
+  data:
+    mongodb:
+      url: mongodb+srv://admin:admin@elucia.geg2xq0.mongodb.net/?retryWrites=true&w=majority
+      database: Movements
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

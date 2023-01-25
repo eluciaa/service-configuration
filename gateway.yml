@@ -30,4 +30,8 @@ spring:
         - id: customer
           uri: lb://customer
           predicates:
-            - Path=/customers/**
+            - Path=/customer/**
+        - id: movement
+          uri: lb://movement
+          predicates:
+            - Path=/movement/**
