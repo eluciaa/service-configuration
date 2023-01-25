@@ -5,8 +5,7 @@ server:
 spring:
   data:
     mongodb:
-      url: mongodb+srv://admin:admin@elucia.geg2xq0.mongodb.net/?retryWrites=true&w=majority
-      database: Customers
+      url: mongodb+srv://dev:az9Y7tr5eGTgHzVF@nttdata.tipkdvn.mongodb.net/bootcamp?retryWrites=true&w=majority
 eureka:
   client:
     fetch-registry: true
