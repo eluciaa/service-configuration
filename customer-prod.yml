@@ -1,17 +1,19 @@
-customer:
-  property: Customer Profile Prod
 server:
   port: ${PORT:${SERVER_PORT:0}}
+
 spring:
   data:
     mongodb:
       uri: mongodb+srv://admin:admin@elucia.geg2xq0.mongodb.net/?retryWrites=true&w=majority
-      database: Customers
+  application:
+    name: customer
+
 eureka:
+  instance:
+    hostname: localhost
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+      defaultZone: http://localhost:8761/eureka
+    prefer-ip-address: true

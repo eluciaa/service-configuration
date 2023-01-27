@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="521ee5f1-99dc-48a5-87aa-49e2df2e8919" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/bankaccount-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bankaccount-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/customer-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/customer-prod.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eurekaserver.yml" beforeDir="false" afterPath="$PROJECT_DIR$/eurekaserver.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
