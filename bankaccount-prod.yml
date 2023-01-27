@@ -5,7 +5,7 @@ server:
 spring:
   data:
     mongodb:
-      url: mongodb+srv://admin:admin@elucia.geg2xq0.mongodb.net/?retryWrites=true&w=majority
+      uri: mongodb+srv://admin:admin@elucia.geg2xq0.mongodb.net/?retryWrites=true&w=majority
       database: Accounts
 eureka:
   client:
