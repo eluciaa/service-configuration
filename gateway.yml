@@ -4,11 +4,10 @@ eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
-    service-url:
-      #default-zone: http://eurekaserver:8761/eureka
-      default-zone: http://ms-eurekaserver:8761/eureka
+    serviceUrl:
+      defaultZone: http://ms-eurekaserver:8761/eureka
   instance:
-    prefer-ip-address: true
+    hostname: ms-eurekaserver
 spring:
   cloud:
     gateway:
