@@ -2,8 +2,6 @@ server:
   port: 8081
 eureka:
   client:
-    fetch-registry: true
-    register-with-eureka: true
     serviceUrl:
       defaultZone: http://ms-eurekaserver:8761/eureka
   instance:
