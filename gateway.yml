@@ -2,10 +2,12 @@ server:
   port: 8081
 eureka:
   client:
+    fetch-registry: true
+    register-with-eureka: true
     serviceUrl:
       defaultZone: http://ms-eurekaserver:8761/eureka
   instance:
-    hostname: ms-eurekaserver
+      hostname: ms-eurekaserver
 spring:
   cloud:
     gateway:
