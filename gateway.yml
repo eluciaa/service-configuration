@@ -8,7 +8,7 @@ eureka:
       #default-zone: http://eurekaserver:8761/eureka
       default-zone: http://ms-eurekaserver:8761/eureka
   instance:
-    hostname: ms-eurekaserver
+    prefer-ip-address: true
 spring:
   cloud:
     gateway:
