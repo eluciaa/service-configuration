@@ -16,7 +16,7 @@ services:
   ms-gateway:
     image: ms-gateway
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://ms-eurekaserver:8761/eureka
+      - eureka.client.serviceUrl.defaultZone=http://ms-eurekaserver:8761/eureka
     ports:
       - "8081:8081"
     depends_on:
@@ -25,7 +25,7 @@ services:
   ms-bankaccount:
     image: ms-bankaccount
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://ms-eurekaserver:8761/eureka
+      - eureka.client.serviceUrl.defaultZone=http://ms-eurekaserver:8761/eureka
     ports:
       - "8700:8700"
     depends_on:
