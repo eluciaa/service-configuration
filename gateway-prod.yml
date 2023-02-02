@@ -5,7 +5,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      default-zone: http://localhost:8761/eureka
+      defaultZone: https://ms-eurekaserver-team.azurewebsites.net/eureka
   instance:
       hostname: localhost
 spring:
@@ -15,6 +15,10 @@ spring:
         locator:
           enabled: true
       routes:
+        - id: customer
+          uri: lb://customer
+          predicates:
+            - Path=/customer/**
         - id: bankaccount
           uri: lb://bankaccount
           predicates:
@@ -27,10 +31,6 @@ spring:
           uri: lb://statusaccount
           predicates:
             - Path=/status/**
-        - id: customer
-          uri: lb://customer
-          predicates:
-            - Path=/customer/**
         - id: movement
           uri: lb://movement
           predicates:

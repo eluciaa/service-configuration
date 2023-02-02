@@ -1,0 +1,41 @@
+server:
+  port: 8081
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://ms-configserver:8761/eureka
+  instance:
+      hostname: localhost
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: customer
+          uri: lb://customer
+          predicates:
+            - Path=/customer/**
+        - id: bankaccount
+          uri: lb://bankaccount
+          predicates:
+            - Path=/accounts/**
+        - id: credit
+          uri: lb://credit
+          predicates:
+            - Path=/credits/**
+        - id: statusaccount
+          uri: lb://statusaccount
+          predicates:
+            - Path=/status/**
+        - id: movement
+          uri: lb://movement
+          predicates:
+            - Path=/movement/**
+        - id: debit
+          uri: lb://debit
+          predicates:
+            - Path=/debit/**
