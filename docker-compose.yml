@@ -1,18 +1,38 @@
 version: "3"
+
 services:
+
   ms-configserver:
+    container_name: ms-configserver
+    build:
+      context: ../ms-configserver
+      dockerfile: Dockerfile
     image: ms-configserver
     ports:
       - "8091:8091"
+    networks:
+      team:
+        aliases:
+          - ms-configserver
 
   ms-eurekaserver:
+    container_name: ms-eurekaserver
+    build:
+      context: ../ms-eurekaserver
+      dockerfile: Dockerfile
     image: ms-eurekaserver
     ports:
       - "8761:8761"
     depends_on:
       - ms-configserver
+    networks:
+      - team
 
   ms-gateway:
+    container_name: ms-gateway
+    build:
+      context: ../ms-gateway
+      dockerfile: Dockerfile
     image: ms-gateway
     environment:
       - eureka.client.serviceUrl.defaultZone=http://ms-eurekaserver:8761/eureka
@@ -20,6 +40,22 @@ services:
       - "8081:8081"
     depends_on:
       - ms-eurekaserver
+    networks:
+      - team
+
+  customer-microservice:
+    container_name: customer-microservice
+    build:
+      context: ../customer-microservice
+      dockerfile: Dockerfile
+    image: customer-microservice
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://ms-eurekaserver:8761/eureka
+    depends_on:
+      - ms-eurekaserver
+      - ms-gateway
+    networks:
+      - team
 
   ms-bankaccount:
     image: ms-bankaccount
@@ -30,6 +66,8 @@ services:
     depends_on:
       - ms-eurekaserver
       - ms-gateway
+    networks:
+      - team
 
   ms-credit:
     image: ms-credit
@@ -40,6 +78,8 @@ services:
     depends_on:
       - ms-eurekaserver
       - ms-gateway
+    networks:
+      - team
 
   ms-debit:
     image: ms-debit
@@ -50,3 +90,9 @@ services:
     depends_on:
       - ms-eurekaserver
       - ms-gateway
+    networks:
+      - team
+
+networks:
+  team:
+    driver: bridge

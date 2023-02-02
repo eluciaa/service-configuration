@@ -1,0 +1,34 @@
+customer:
+  property: Customer Profile Dev
+
+server:
+  port: ${PORT:${SERVER_PORT:0}}
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://admin:admin@elucia.geg2xq0.mongodb.net/bootcamp?retryWrites=true&w=majority
+  application:
+    name: customer
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: https://ms-eurekaserver-team.azurewebsites.net/eureka
+    prefer-ip-address: true
+
+resilience4j.circuitbreaker:
+  instances:
+    customer:
+      registerHealthIndicator: true
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 3
+      slidingWindowType: TIME_BASED
+      minimumNumberOfCalls: 4
+      waitDurationInOpenState: 3s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
