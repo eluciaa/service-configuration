@@ -43,12 +43,12 @@ services:
     networks:
       - team
 
-  customer-microservice:
-    container_name: customer-microservice
+  ms-customer:
+    container_name: ms-customer
     build:
-      context: ../customer-microservice
+      context: ../ms-customer
       dockerfile: Dockerfile
-    image: customer-microservice
+    image: ms-customer
     environment:
       - eureka.client.serviceUrl.defaultZone=http://ms-eurekaserver:8761/eureka
     depends_on:
