@@ -39,3 +39,7 @@ spring:
           uri: lb://debit
           predicates:
             - Path=/debit/**
+        - id: monedero
+          uri: lb://monedero
+          predicates:
+            - Path=/monedero/**

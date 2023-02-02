@@ -97,6 +97,18 @@ services:
     networks:
       - team
 
+  ms-monedero:
+    image: ms-monedero
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://ms-eurekaserver:8761/eureka
+    ports:
+      - "8703:8703"
+    depends_on:
+      - ms-eurekaserver
+      - ms-gateway
+    networks:
+      - team
+
 networks:
   team:
     driver: bridge

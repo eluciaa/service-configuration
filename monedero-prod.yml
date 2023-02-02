@@ -1,0 +1,18 @@
+monedero:
+  property: Monedero Profile Dev
+server:
+  port: ${PORT:${SERVER_PORT:0}}
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://admin:admin@elucia.geg2xq0.mongodb.net/bootcamp?retryWrites=true&w=majority
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: https://ms-eurekaserver-team.azurewebsites.net/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  server:
+    wait-time-in-ms-when-sync-empty: 0
