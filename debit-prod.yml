@@ -1,12 +1,12 @@
-monedero:
-  property: Monedero Profile Dev
+credit:
+  property: debit Profile Prod
 server:
   port: ${PORT:${SERVER_PORT:0}}
 spring:
   data:
     mongodb:
       uri: mongodb+srv://admin:admin@elucia.geg2xq0.mongodb.net/?retryWrites=true&w=majority
-      database: Monedero
+      database: Debit
 eureka:
   client:
     fetch-registry: true
@@ -15,5 +15,3 @@ eureka:
       default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-  server:
-    wait-time-in-ms-when-sync-empty: 0
