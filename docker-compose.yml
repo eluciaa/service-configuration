@@ -10,10 +10,13 @@ services:
     image: ms-configserver
     ports:
       - "8091:8091"
+    healthcheck:
+      test: curl -f http://ms-configserver:8091/actuator/health || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 5
     networks:
-      team:
-        aliases:
-          - ms-configserver
+      - team
 
   ms-eurekaserver:
     container_name: ms-eurekaserver
@@ -25,8 +28,14 @@ services:
       - spring.cloud.config.uri= http://ms-configserver:8091
     ports:
       - "8761:8761"
+    healthcheck:
+      test: curl -f http://ms-eurekaserver:8761/actuator/health || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 5
     depends_on:
-      - ms-configserver
+      ms-configserver:
+        condition: service_healthy
     networks:
       - team
 
@@ -42,7 +51,8 @@ services:
     ports:
       - "8081:8081"
     depends_on:
-      - ms-eurekaserver
+      ms-eurekaserver:
+        condition: service_healthy
     networks:
       - team
 
@@ -53,59 +63,73 @@ services:
       dockerfile: Dockerfile
     image: ms-customer
     environment:
+      - spring.profiles.active= docker
       - spring.cloud.config.uri= http://ms-configserver:8091
-      - eureka.client.serviceUrl.defaultZone=http://ms-eurekaserver:8761/eureka
     depends_on:
-      - ms-eurekaserver
-      - ms-gateway
+      ms-eurekaserver:
+        condition: service_healthy
+      ms-gateway:
+        condition: service_started
     networks:
       - team
 
   ms-bankaccount:
     image: ms-bankaccount
     environment:
-      - eureka.client.serviceUrl.defaultZone=http://ms-eurekaserver:8761/eureka
+      - spring.profiles.active= docker
+      - spring.cloud.config.uri= http://ms-configserver:8091
     ports:
       - "8700:8700"
     depends_on:
-      - ms-eurekaserver
-      - ms-gateway
+      ms-eurekaserver:
+        condition: service_healthy
+      ms-gateway:
+        condition: service_started
     networks:
       - team
 
   ms-credit:
     image: ms-credit
     environment:
-      - eureka.client.serviceUrl.defaultZone=http://ms-eurekaserver:8761/eureka
+      - spring.profiles.active= docker
+      - spring.cloud.config.uri= http://ms-configserver:8091
     ports:
       - "8701:8701"
     depends_on:
-      - ms-eurekaserver
-      - ms-gateway
+      ms-eurekaserver:
+        condition: service_healthy
+      ms-gateway:
+        condition: service_started
     networks:
       - team
 
   ms-debit:
     image: ms-debit
     environment:
-      - eureka.client.serviceUrl.defaultZone=http://ms-eurekaserver:8761/eureka
+      - spring.profiles.active= docker
+      - spring.cloud.config.uri= http://ms-configserver:8091
     ports:
       - "8702:8702"
     depends_on:
-      - ms-eurekaserver
-      - ms-gateway
+      ms-eurekaserver:
+        condition: service_healthy
+      ms-gateway:
+        condition: service_started
     networks:
       - team
 
   ms-monedero:
     image: ms-monedero
     environment:
-      - eureka.client.serviceUrl.defaultZone=http://ms-eurekaserver:8761/eureka
+      - spring.profiles.active= docker
+      - spring.cloud.config.uri= http://ms-configserver:8091
     ports:
       - "8703:8703"
     depends_on:
-      - ms-eurekaserver
-      - ms-gateway
+      ms-eurekaserver:
+        condition: service_healthy
+      ms-gateway:
+        condition: service_started
     networks:
       - team
 
